@@ -17,7 +17,7 @@
         android:layout_alignLeft="@+id/webView1"
         android:layout_alignRight="@+id/webView1"
         android:text=""
-        android:alpha="200"
+        android:alpha="250"
          android:scrollbars="vertical"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -30,6 +30,7 @@
         android:layout_toLeftOf="@+id/webView1"
         android:background="@color/Yellow"
         android:ems="10"
+       
         android:inputType="textNoSuggestions"
         android:singleLine="true" />
 

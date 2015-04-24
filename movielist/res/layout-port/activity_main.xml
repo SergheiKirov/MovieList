@@ -9,37 +9,19 @@
     
     tools:context="com.kirov.movielist.MainActivity" >
 
-    <EditText
-        android:id="@+id/Search"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_alignLeft="@+id/listFilm"
-        android:layout_alignRight="@+id/listFilm"
-        android:layout_below="@+id/webView1"
-        android:layout_marginBottom="15dp"
-       android:inputType="textNoSuggestions"  
-        android:background="@color/Yellow"
-        android:ems="10"
-        android:singleLine="true"
-        android:text="" >
-
-       
-    </EditText>
-
     <WebView
         android:id="@+id/webView1"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-       />
+        android:layout_below="@+id/Search" />
 
     <ListView
         android:id="@+id/listFilm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/webView1"
-        android:layout_below="@+id/Search"
+        android:layout_below="@+id/webView1"
         android:background="@color/Gray" >
 
     </ListView>
@@ -52,8 +34,23 @@
         android:layout_alignLeft="@+id/webView1"
         android:layout_alignRight="@+id/webView1"
         android:text=""
-        android:alpha="200"
+        android:alpha="250"
          android:scrollbars="vertical"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/Search"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/webView1"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/webView1"
+        android:background="@color/Yellow"
+        android:ems="10"
+        android:inputType="textNoSuggestions"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

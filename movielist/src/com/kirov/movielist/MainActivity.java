@@ -168,7 +168,8 @@ public void getinfoMovie (String title, String Year)
 {
      String url;
 	//make JSON request
-		
+		if(Year.length()>4)
+			Year=Year.substring(0, 3);
 			url = "http://www.omdbapi.com/?t=" + title+"&y"+Year+"&plot=full&r=json";
 		url=url.replace(" ", "+");
 		JSONObject JJ = JSONfunctions .getJSONfromURL(url);
@@ -185,7 +186,7 @@ public void getinfoMovie (String title, String Year)
      String imdbRating = JJ.getString("imdbRating");
      String poster = JJ.getString("Poster");
      
-	showinfoMovie(poster, released,  runtime,  genre,  actors,  plot);
+	showinfoMovie(Year,poster, released,  runtime,  genre,  actors,  plot);
 	} catch (JSONException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -221,11 +222,11 @@ public void showresultsofsearch(String[] input)
 
 }
 // show poster and info on screen
-public void showinfoMovie(String poster, String released, String runtime, String genre, String actors, String Plot)
+public void showinfoMovie(String year,String poster, String released, String runtime, String genre, String actors, String Plot)
 {
 
 pict.loadUrl(poster);
-info.setText( "Date of release: "+released+"\nRun time: "+ runtime+"\nGenre: "+genre+"\nActors: "+actors);
+info.setText("Year: "+ year+ "\nDate of release: "+released+"\nRun time: "+ runtime+"\nGenre: "+genre+"\nActors: "+actors);
 		 
 
 
