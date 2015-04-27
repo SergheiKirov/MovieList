@@ -5,14 +5,21 @@ import java.net.URLEncoder;
 
 
 
+
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
+
+
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
@@ -57,6 +64,7 @@ public class MainActivity extends ActionBarActivity {
 	
 	
 	pict=(WebView) findViewById(R.id.webView1);
+	pict.setInitialScale(100);
 	
 	info=(TextView) findViewById(R.id.INFO);
 	//info.getBackground().setAlpha(200);
@@ -90,7 +98,8 @@ public class MainActivity extends ActionBarActivity {
 			
 		}
 	 });
-   
+	if(!isNetworkConnected())
+		internetallert();
 	
 	}	
 
@@ -210,7 +219,43 @@ private boolean isNetworkConnected() {
 		  return true;
 	   }
 	 }
-// Controller to sho list on a screen
+
+public void  internetallert()
+{
+	   
+	 final Context context = this;
+   /* Alert Dialog Code Start*/     
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setTitle("INTERNET ALLERT");
+        alert.setMessage("TO WARK WITH THIS APP YOU NEED WORKING INTERNET"); //Message here
+        alert.setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
+          public void onClick(DialogInterface dialog, int whichButton) {
+            // Canceled.
+              dialog.cancel();
+          }
+        });
+        alert.setPositiveButton("TURN ON INERNET", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+              // Canceled.
+            	internetON();
+                dialog.cancel();
+            }
+          });
+        AlertDialog alertDialog = alert.create();
+        alertDialog.show();
+   /* Alert Dialog Code End*/        	
+
+
+}
+
+public void internetON()
+{
+	WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+	wifi.setWifiEnabled(true);
+}
+
+
+// Controller to show list on a screen
 public void showresultsofsearch(String[] input)
 {
  arrayAdapter = new ArrayAdapter<Object>( this, android.R.layout.simple_list_item_1, input);
